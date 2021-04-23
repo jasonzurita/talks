@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  format-check:
+    name: Format check
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install SwiftFormat
+      run: brew install swiftformat
+    - name: Swift format check
+      run: swiftformat . --lint
+
+  linting:
+    name: Review & Lint
+    runs-on: macOS-latest
+    needs: format-check
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: cache gems
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-
+
+      - name: bundle install (deps)
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Run SwiftLint (via Danger)
+        env:
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
+        run: bundle exec danger

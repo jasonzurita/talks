@@ -1,0 +1,9 @@
+# Rule explanations: https://realm.github.io/SwiftLint/rule-directory.html
+#
+disabled_rules:
+  - identifier_name
+  - switch_case_alignment
+
+opt_in_rules:
+  - empty_count
+

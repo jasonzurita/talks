@@ -1,0 +1,3 @@
+--exclude Pods
+--header strip
+--enable isEmpty

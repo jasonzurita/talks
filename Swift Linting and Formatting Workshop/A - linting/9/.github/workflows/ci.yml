@@ -1,0 +1,15 @@
+name: CI
+
+on:
+    # Trigger workflow only when PR targets master branch
+    pull_request:
+      branches:
+        - master
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Linter check (SwiftLint)
+      run: swiftlint lint . --strict
