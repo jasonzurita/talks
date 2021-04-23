@@ -1,0 +1,6 @@
+# Vim
+*.sw[nop]
+
+# Xcode & SPM
+.build
+xcuserdata/
