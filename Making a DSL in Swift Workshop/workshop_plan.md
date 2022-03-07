@@ -11,7 +11,7 @@
   + Please make sure you have the latest Xcode installed
   + Along the same lines, I would suggest restarting Xcode before we start (maybe your computer too)
   + To help cut down on background noise, I suggest everyone try and wear headphones. (Not a huge deal if you don’t.)
-  + Consider brining a snack : )
+  + Consider bringing a snack : )
 - Send out link to download materials
 - General hello while waiting for everyone to join
 
